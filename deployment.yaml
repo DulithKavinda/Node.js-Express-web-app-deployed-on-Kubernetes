@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-web-deployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: k8s-web-deployment
+  template:
+    metadata:
+      labels:
+        app: k8s-web-deployment
+    spec:
+      containers:
+        - name: k8s-web-deployment
+          image: dulithkavinda/k8s-web-deployment
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "250m"
+          ports:
+            - containerPort: 3000
